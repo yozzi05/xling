@@ -249,7 +249,7 @@ footer .disc{grid-column:1/-1;margin-top:26px;padding-top:22px;border-top:1px so
       <h1>The first lifeform<br>born on X Layer.</h1>
       <p class="sub">Nobody deployed him.<br>He just appeared.</p>
       <div class="btns">
-        <a class="btn solid" href="#token">Buy $XLING</a>
+        <a class="btn solid buy" href="#">Buy $XLING</a>
         <a class="btn" href="#token">View chart</a>
       </div>
       <p class="fine">Born on X Layer. Powered by the community.</p>
@@ -474,7 +474,7 @@ footer .disc{grid-column:1/-1;margin-top:26px;padding-top:22px;border-top:1px so
     <h2 class="rv">He wasn't deployed.<br>He was born.</h2>
     <p class="sub">Meet XLING.</p>
     <div class="btns">
-      <a class="btn solid" href="#token">Buy $XLING</a>
+      <a class="btn solid buy" href="#">Buy $XLING</a>
       <a class="btn" href="#community">Join the community</a>
     </div>
   </div>
@@ -505,9 +505,14 @@ document.querySelectorAll('img[data-src="mascot"]').forEach(i=>i.src=MASCOT_SRC)
 
 /* ===== CONFIG — fill these in ===== */
 const CONFIG = {
-  contract: '[CONTRACT ADDRESS]',
-  buyUrl: '#', chartUrl: '#', xUrl: '#', telegramUrl: '#',
+  contract: '0xc44eDb72D287D57bB156894F9aE3d755c8871850',
+  buyUrl: 'https://size.fun/#/token/0xc44eDb72D287D57bB156894F9aE3d755c8871850',
+  chartUrl: '#',
+  xUrl: 'https://x.com/Xling_okx',
+  telegramUrl: 'https://t.me/xlingokx',
   // Optional: function returning {price, mcap, holders, liquidity}; wire your API here.
+  fetchStats: null
+}; wire your API here.
   fetchStats: null
 };
 
@@ -679,7 +684,7 @@ function buildMascot(svg, mode){
 (function(){
   const c=document.getElementById('contract');c.textContent=CONFIG.contract;
   const link=(id,url)=>{const el=document.getElementById(id);if(el&&url&&url!=='#'){el.href=url;el.target='_blank';el.rel='noopener';}};
-  link('buyLink',CONFIG.buyUrl);link('chartLink',CONFIG.chartUrl);link('fChart',CONFIG.chartUrl);
+  link('buyLink',CONFIG.buyUrl);document.querySelectorAll('a.buy').forEach(a=>{a.href=CONFIG.buyUrl;a.target='_blank';a.rel='noopener';});link('chartLink',CONFIG.chartUrl);link('fChart',CONFIG.chartUrl);
   link('xLink',CONFIG.xUrl);link('fX',CONFIG.xUrl);link('tgLink',CONFIG.telegramUrl);link('fTg',CONFIG.telegramUrl);
   const btn=document.getElementById('copyBtn');
   btn.addEventListener('click',async()=>{
